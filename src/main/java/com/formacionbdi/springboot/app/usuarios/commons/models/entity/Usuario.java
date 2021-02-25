@@ -48,10 +48,15 @@ public class Usuario implements Serializable {
 	private String email;
 
 	@ManyToMany(fetch = FetchType.LAZY)
+	/**
+	 * Esta parte es opcional por defecto se crea tal cual como está aqui sin
+	 * necesidad de definirlo, se hace sólo para saber. Es posible cambiarlos
+	 * nombres de cada cosa según sea necesario.
+	 */
 	@JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), uniqueConstraints = {
 			@UniqueConstraint(columnNames = { "usuario_id", "role_id" }) })
 	private List<Role> roles;
-	
+
 	private Integer intentos;
 
 }
